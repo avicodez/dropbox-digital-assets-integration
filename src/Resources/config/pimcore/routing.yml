@@ -1,0 +1,5 @@
+dropbox_digital_assets_integration:
+    resource: "@DropboxDigitalAssetsIntegrationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

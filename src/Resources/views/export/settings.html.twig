@@ -1,0 +1,40 @@
+{% extends '@DropboxDigitalAssetsIntegration/export/layout.html.twig' %}
+
+{% block content %}
+	<section class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3 col-md-12">
+					<h1 class="settings_header">Configuration</h1>
+					<div class="sync-btn-cont">
+					<a class="btn btn-primary" href="javascript:void(0)" id="plugin-sync-btn">Sync</a>
+					<img id="plugin-sync-loader" src="{{ asset('bundles/dropboxdigitalassetsintegration/img/loader.gif') }}" style="height:25px; display:none">
+					<span class="sync-label-span">(Click on the Sync button will upload your digital assets to Dropbox)</span>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="alert alert-success import-plugin-flash" id="import-plugin-success-flash" style="display:none"></div>
+			
+			<div class="alert alert-danger import-plugin-flash" id="import-plugin-error-flash" style="display:none"></div>
+			
+			<form method="post" action="/admin/dropbox_digital_assets_integration/settings/submit" id="twohats_dropbox_settings_form">
+				<input type="hidden" name="csrfToken" value="{{ pimcore_csrf.getCsrfToken() }}">
+				<div class="form-group">
+					<label for="dropbox_client_id">Client ID</label>
+					<input type="text" class="form-control" id="dropbox_client_id" name="dropbox_client_id" {% if configData['client_id'] is defined %} value="{{ configData['client_id'] }}" {% endif %} placeholder="Client ID">
+				</div>
+				<div class="form-group">
+					<label for="dropbox_client_secret">Client Secret</label>
+					<input type="password" class="form-control" id="dropbox_client_secret" name="dropbox_client_secret" {% if configData['client_secret'] is defined %} value="{{ configData['client_secret'] }}" {% endif %} placeholder="Client Secret">
+				</div>
+				<div class="form-group">
+					<label for="dropbox_access_token">Access Token</label>
+					<input type="password" class="form-control" id="dropbox_acess_token" name="dropbox_acess_token" {% if configData['client_access_token'] is defined %} value="{{ configData['client_access_token'] }}" {% endif %} placeholder="Access Token">
+				</div>
+				<a class="btn btn-primary" id="settings_submit_btn" href="javascript:void(0)">Submit</a>
+			</form>
+		</div>
+	</section>
+{% endblock %}

@@ -119,7 +119,8 @@ class DropboxHost implements FileHost
         } else {
             $msg = 'Invalid Access Token';
         }
-
+        $msg = $msg . " Login to your Dropbox account, generate the access token and paste it below.";
+        
         return $msg;
     }
 }
